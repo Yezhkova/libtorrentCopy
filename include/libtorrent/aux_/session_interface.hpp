@@ -297,8 +297,9 @@ namespace aux {
 		virtual void add_dht_node(udp::endpoint const& n) = 0;
 		virtual bool has_dht() const = 0;
 		virtual int external_udp_port(address const& local_address) const = 0;
-		virtual dht::dht_tracker* dht() = 0;
+        virtual dht::dht_tracker* dht() = 0;
 		virtual void prioritize_dht(std::weak_ptr<torrent> t) = 0;
+
 #endif
 
 		virtual counters& stats_counters() = 0;

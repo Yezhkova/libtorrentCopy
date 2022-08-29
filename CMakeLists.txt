@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR) # Configurable policies: <= C
 
 cmake_policy(SET CMP0091 NEW)
 cmake_policy(SET CMP0092 NEW)
-
+set(CMAKE_CXX_STANDARD 17)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 include(LibtorrentMacros)
 
@@ -16,6 +16,8 @@ set (SOVERSION "${VER_MAJOR}.${VER_MINOR}")
 
 include(GNUInstallDirs)
 include(GeneratePkgConfig)
+
+add_compile_definitions(LIBTORRENT_MESSENGER_PET_PROJECT)
 
 set(libtorrent_include_files
 	add_torrent_params.hpp
@@ -788,10 +790,10 @@ else()
 endif()
 
 if (dht)
-	target_sources(torrent-rasterbar PRIVATE
+        target_sources(torrent-rasterbar PRIVATE
 		${libtorrent_kademlia_include_files}
 		include/libtorrent/aux_/hasher512.hpp
-		${kademlia_sources}
+                ${kademlia_sources}
 		${ed25519_sources}
 	)
 else()

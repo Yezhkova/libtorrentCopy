@@ -509,6 +509,20 @@ namespace {
 		return session_proxy(m_io_service, m_thread, m_impl);
 	}
 
+    dht::dht_state session::getDhtState()
+    {
+        return m_impl->dht()->state();
+    }
+
+
+    void setReplyHandler(std::function<void(const dht::msg &)> f)
+    {
+        dht::gReplyHandler = f;
+    }
+
+
+
+
 	session_proxy::session_proxy() = default;
 	session_proxy::session_proxy(std::shared_ptr<io_context> ios
 		, std::shared_ptr<std::thread> t

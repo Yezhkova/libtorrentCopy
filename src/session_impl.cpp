@@ -389,7 +389,7 @@ void apply_deprecated_dht_settings(settings_pack& sett, bdecode_node const& s)
 		return !(flags & local_network);
 	}
 
-	void session_impl::init_peer_class_filter(bool unlimited_local)
+    void session_impl::init_peer_class_filter(bool unlimited_local)
 	{
 		// set the default peer_class_filter to use the local peer class
 		// for peers on local networks
@@ -404,7 +404,7 @@ void apply_deprecated_dht_settings(settings_pack& sett, bdecode_node const& s)
 		};
 
 		static const class_mapping v4_classes[] =
-		{
+        {
 			// everything
 			{"0.0.0.0", "255.255.255.255", gfilter},
 			// local networks
@@ -1994,6 +1994,7 @@ namespace {
 			}
 		}
 	}
+
 
 	void session_impl::reopen_listen_sockets(bool const map_ports)
 	{
@@ -7080,6 +7081,7 @@ namespace {
 #endif
 	}
 
+
 #if TORRENT_USE_INVARIANT_CHECKS
 	void session_impl::check_invariant() const
 	{
@@ -7302,4 +7304,5 @@ namespace {
 		}
 		catch (std::exception const&) {}
 #endif // TORRENT_DISABLE_LOGGING
+
 }}

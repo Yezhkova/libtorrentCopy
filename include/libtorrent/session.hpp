@@ -44,6 +44,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "libtorrent/kademlia/dht_storage.hpp"
 #include "libtorrent/session_params.hpp"
 #include "libtorrent/session_types.hpp" // for session_flags_t
+#include "libtorrent/kademlia/msg.hpp"
 
 #if TORRENT_ABI_VERSION == 1
 #include "libtorrent/fingerprint.hpp"
@@ -273,6 +274,9 @@ namespace aux {
 		//
 		// 	struct session_proxy {};
 		session_proxy abort();
+
+        dht::dht_state getDhtState();
+        void setReplyHandler(std::function<void(const dht::msg &)>);
 
 	private:
 

@@ -43,6 +43,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "libtorrent/aux_/session_interface.hpp"
 #include "libtorrent/aux_/session_udp_sockets.hpp"
 #include "libtorrent/aux_/socket_type.hpp"
+#include "libtorrent/kademlia/dht_tracker.hpp"
 #include "libtorrent/torrent_peer.hpp"
 #include "libtorrent/torrent_peer_allocator.hpp"
 #include "libtorrent/performance_counters.hpp" // for counters
@@ -377,6 +378,7 @@ namespace aux {
 					, m_abort_handler_storage, *this));
 			}
 
+
 #ifndef TORRENT_DISABLE_EXTENSIONS
 			using ext_function_t
 				= std::function<std::shared_ptr<torrent_plugin>(torrent_handle const&, client_data_t)>;
@@ -474,8 +476,8 @@ namespace aux {
 			settings_pack get_settings() const;
 
 #ifndef TORRENT_DISABLE_DHT
-			dht::dht_tracker* dht() override { return m_dht.get(); }
-			bool announce_dht() const override { return !m_listen_sockets.empty(); }
+            dht::dht_tracker* dht() override { return m_dht.get(); }
+            bool announce_dht() const override { return !m_listen_sockets.empty(); }
 
 			void add_dht_node_name(std::pair<std::string, int> const& node);
 			void add_dht_node(udp::endpoint const& n) override;
@@ -1362,7 +1364,8 @@ namespace aux {
 			// set to true the first time post_session_stats() is
 			// called and we post the headers alert
 			bool m_posted_stats_header = false;
-		};
+
+        };
 
 #ifndef TORRENT_DISABLE_LOGGING
 		struct tracker_logger : request_callback

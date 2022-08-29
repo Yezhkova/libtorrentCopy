@@ -295,8 +295,7 @@ TORRENT_TEST(dht_dual_stack_mutable_item)
 			}
 			if (ticks == 2)
 			{
-				std::array<char, 32> seed;
-				std::tie(pk, sk) = lt::dht::ed25519_create_keypair(seed);
+                std::tie(pk, sk) = lt::dht::ed25519_create_keypair(seed);
 
 				ses.dht_put_item(pk.bytes, [&](lt::entry& item, std::array<char, 64>& sig
 					, std::int64_t& seq, std::string const& salt)

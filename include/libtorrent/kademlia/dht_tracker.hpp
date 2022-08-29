@@ -65,7 +65,7 @@ namespace aux {
 namespace libtorrent {
 namespace dht {
 
-	struct TORRENT_EXTRA_EXPORT dht_tracker final
+    struct TORRENT_EXTRA_EXPORT dht_tracker final
 		: socket_manager
 		, std::enable_shared_from_this<dht_tracker>
 	{
@@ -169,11 +169,11 @@ namespace dht {
 			tracker_node(io_context& ios
 				, aux::listen_socket_handle const& s, socket_manager* sock
 				, aux::session_settings const& settings
-				, node_id const& nid
+                , node_id const& nid
 				, dht_observer* observer, counters& cnt
 				, get_foreign_node_t get_foreign_node
 				, dht_storage_interface& storage);
-			tracker_node(tracker_node const&) = delete;
+            tracker_node(tracker_node const&) = delete;
 			tracker_node(tracker_node&&) = delete;
 
 			node dht;
@@ -194,6 +194,11 @@ namespace dht {
 		bool has_quota() override;
 		bool send_packet(aux::listen_socket_handle const& s, entry& e, udp::endpoint const& addr) override;
 
+#ifdef TORRENT_MESSENGER_PET_PROJECT
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public:
+#endif
+
 		// this is the bdecode_node DHT messages are parsed into. It's a member
 		// in order to avoid having to deallocate and re-allocate it for every
 		// message.
@@ -206,7 +211,7 @@ namespace dht {
 		send_fun_t m_send_fun;
 		dht_observer* m_log;
 
-		std::vector<char> m_send_buf;
+        std::vector<char> m_send_buf;
 		dos_blocker m_blocker;
 
 		deadline_timer m_key_refresh_timer;

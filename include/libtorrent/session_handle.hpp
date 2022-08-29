@@ -494,7 +494,7 @@ namespace libtorrent {
 		// must first retrieve it, then modify it, then write it back. The way
 		// the DHT works, it is natural to always do a lookup before storing and
 		// calling the callback in between is convenient.
-		void dht_put_item(std::array<char, 32> key
+        void  dht_put_item(std::array<char, 32> key
 			, std::function<void(entry&, std::array<char, 64>&
 				, std::int64_t&, std::string const&)> cb
 			, std::string salt = std::string());

@@ -39,6 +39,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <libtorrent/config.hpp>
 #include <libtorrent/sha1_hash.hpp>
 #include <libtorrent/address.hpp>
+#include "libtorrent/kademlia/node_id.hpp"
 
 namespace libtorrent {
 namespace dht {

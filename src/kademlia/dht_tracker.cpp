@@ -619,7 +619,7 @@ namespace {
 	dht_state dht_tracker::state() const
 	{
 		dht_state ret;
-		for (auto& n : m_nodes)
+        for (auto& n : m_nodes)
 		{
 			// use the local rather than external address because if the user is behind NAT
 			// we won't know the external IP on startup

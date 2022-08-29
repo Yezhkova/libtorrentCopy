@@ -37,6 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #include "libtorrent/socket.hpp"
 #include "libtorrent/span.hpp"
+#include <optional>
 
 namespace libtorrent {
 
@@ -97,7 +98,10 @@ bool verify_message(bdecode_node const& msg, key_desc_t const (&desc)[Size]
 	return verify_message_impl(msg, desc, ret, error);
 }
 
+inline std::optional<std::function <void(const msg &)>> gReplyHandler;
+
 }
 }
+
 
 #endif
