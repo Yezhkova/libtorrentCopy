@@ -44,7 +44,7 @@ namespace dht {
 
 struct direct_traversal : traversal_algorithm
 {
-	using message_callback = std::function<void(dht::msg const&)>;
+    using message_callback = std::function<void(dht::msg const&)>;
 
 	direct_traversal(node& node
 		, node_id const& target

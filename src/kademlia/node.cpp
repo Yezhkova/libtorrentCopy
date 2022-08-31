@@ -265,6 +265,12 @@ void node::unreachable(udp::endpoint const& ep)
 
 void node::incoming(aux::listen_socket_handle const& s, msg const& m)
 {
+#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
+    if(gResponseHandler)
+    {
+        (* gResponseHandler)(m);
+    }
+#endif
 	// is this a reply?
 	bdecode_node const y_ent = m.message.dict_find_string("y");
 	if (!y_ent || y_ent.string_length() != 1)

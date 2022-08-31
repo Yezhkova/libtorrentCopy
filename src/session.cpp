@@ -508,20 +508,19 @@ namespace {
 		m_impl->alerts().set_notify_function({});
 		return session_proxy(m_io_service, m_thread, m_impl);
 	}
+#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
 
     dht::dht_state session::getDhtState()
     {
         return m_impl->dht()->state();
     }
 
-
-    void setReplyHandler(std::function<void(const dht::msg &)> f)
+    void setResponseHandler(std::function<void(const dht::msg &)> f)
     {
-        dht::gReplyHandler = f;
+        dht::gResponseHandler = f;
     }
 
-
-
+#endif
 
 	session_proxy::session_proxy() = default;
 	session_proxy::session_proxy(std::shared_ptr<io_context> ios

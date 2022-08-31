@@ -274,10 +274,10 @@ namespace aux {
 		//
 		// 	struct session_proxy {};
 		session_proxy abort();
-
+#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
         dht::dht_state getDhtState();
-        void setReplyHandler(std::function<void(const dht::msg &)>);
-
+        void setResponseHandler(std::function<void(const dht::msg &)>);
+#endif
 	private:
 
 		void start(session_flags_t, session_params&& params, io_context* ios);
