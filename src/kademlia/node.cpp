@@ -38,6 +38,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #include "libtorrent/config.hpp"
 
+#include <iostream>
 #include <utility>
 #include <cinttypes> // for PRId64 et.al.
 #include <functional>
@@ -73,6 +74,8 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "libtorrent/kademlia/msg.hpp"
 #include <libtorrent/kademlia/put_data.hpp>
 #include <libtorrent/kademlia/sample_infohashes.hpp>
+
+#include <iostream>
 
 using namespace std::placeholders;
 
@@ -268,7 +271,7 @@ void node::incoming(aux::listen_socket_handle const& s, msg const& m)
 #ifdef LIBTORRENT_MESSENGER_PET_PROJECT
     if(gResponseHandler)
     {
-        (* gResponseHandler)(m);
+//         (*gResponseHandler)(m);
     }
 #endif
 	// is this a reply?
@@ -307,7 +310,6 @@ void node::incoming(aux::listen_socket_handle const& s, msg const& m)
 					, m.addr.address());
 		}
 	}
-
 	switch (y)
 	{
 		case 'r':

@@ -515,9 +515,10 @@ namespace {
         return m_impl->dht()->state();
     }
 
-    void setResponseHandler(std::function<void(const dht::msg &)> f)
+    void session::setResponseHandler(lt::session * session, std::string nodeIdRequired,
+                                     std::function<void(const lt::dht::msg &, std::string, lt::session * )> f)
     {
-        dht::gResponseHandler = f;
+        gResponseHandler = f;
     }
 
 #endif

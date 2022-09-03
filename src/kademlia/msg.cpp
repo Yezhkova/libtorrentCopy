@@ -35,6 +35,9 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "libtorrent/kademlia/msg.hpp"
 #include "libtorrent/bdecode.hpp"
 #include "libtorrent/entry.hpp"
+#include "libtorrent/session.hpp"
+
+//std::optional <std::function<void(const lt::dht::msg &, libtorrent::digest32<160>, lt::session * )>> gResponseHandler;
 
 namespace libtorrent { namespace dht {
 

@@ -35,6 +35,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #ifndef TORRENT_SESSION_HPP_INCLUDED
 #define TORRENT_SESSION_HPP_INCLUDED
 
+#include <iostream>
 #include <thread>
 
 #include "libtorrent/config.hpp"
@@ -45,10 +46,18 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "libtorrent/session_params.hpp"
 #include "libtorrent/session_types.hpp" // for session_flags_t
 #include "libtorrent/kademlia/msg.hpp"
-
+#include <iostream>
 #if TORRENT_ABI_VERSION == 1
 #include "libtorrent/fingerprint.hpp"
 #include <cstdio> // for snprintf
+#endif
+
+#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
+
+namespace libtorrent {
+    namespace dht {struct msg;} // forward decl, bcs msg uses session.hpp to create itself but i include msg in session recursively
+}
+
 #endif
 
 namespace libtorrent {
@@ -276,7 +285,8 @@ namespace aux {
 		session_proxy abort();
 #ifdef LIBTORRENT_MESSENGER_PET_PROJECT
         dht::dht_state getDhtState();
-        void setResponseHandler(std::function<void(const dht::msg &)>);
+        void setResponseHandler(lt::session * session, std::string nodeIdRequired,
+                                std::function<void(const dht::msg &, std::string, lt::session * )> f);
 #endif
 	private:
 

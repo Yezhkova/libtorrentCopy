@@ -35,6 +35,8 @@ POSSIBILITY OF SUCH DAMAGE.
 #ifndef TORRENT_KADEMLIA_MSG_HPP
 #define TORRENT_KADEMLIA_MSG_HPP
 
+#include "libtorrent/session.hpp"
+#include "libtorrent/sha1_hash.hpp"
 #include "libtorrent/socket.hpp"
 #include "libtorrent/span.hpp"
 #include <optional>
@@ -97,11 +99,11 @@ bool verify_message(bdecode_node const& msg, key_desc_t const (&desc)[Size]
 {
 	return verify_message_impl(msg, desc, ret, error);
 }
-#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
-inline std::optional<std::function <void(const msg &)>> gResponseHandler;
-#endif
 }
 }
 
+#ifdef LIBTORRENT_MESSENGER_PET_PROJECT
+inline std::optional <std::function<void(const lt::dht::msg &, std::string, lt::session * )>> gResponseHandler;
+#endif
 
 #endif
