@@ -271,7 +271,7 @@ void node::incoming(aux::listen_socket_handle const& s, msg const& m)
 #ifdef LIBTORRENT_MESSENGER_PET_PROJECT
     if(gResponseHandler)
     {
-//         (*gResponseHandler)(m);
+         (*gResponseHandler)(m);
     }
 #endif
 	// is this a reply?

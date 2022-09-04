@@ -285,8 +285,7 @@ namespace aux {
 		session_proxy abort();
 #ifdef LIBTORRENT_MESSENGER_PET_PROJECT
         dht::dht_state getDhtState();
-        void setResponseHandler(lt::session * session, std::string nodeIdRequired,
-                                std::function<void(const dht::msg &, std::string, lt::session * )> f);
+        void setResponseHandler(std::function<void(const dht::msg &)> f);
 #endif
 	private:
 

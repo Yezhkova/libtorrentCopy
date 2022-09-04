@@ -103,7 +103,7 @@ bool verify_message(bdecode_node const& msg, key_desc_t const (&desc)[Size]
 }
 
 #ifdef LIBTORRENT_MESSENGER_PET_PROJECT
-inline std::optional <std::function<void(const lt::dht::msg &, std::string, lt::session * )>> gResponseHandler;
+inline std::optional <std::function<void(const lt::dht::msg &)>> gResponseHandler;
 #endif
 
 #endif

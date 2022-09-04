@@ -515,8 +515,7 @@ namespace {
         return m_impl->dht()->state();
     }
 
-    void session::setResponseHandler(lt::session * session, std::string nodeIdRequired,
-                                     std::function<void(const lt::dht::msg &, std::string, lt::session * )> f)
+    void session::setResponseHandler(std::function<void(const lt::dht::msg &)> f)
     {
         gResponseHandler = f;
     }
